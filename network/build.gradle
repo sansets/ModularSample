@@ -1,0 +1,43 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply from: '../deps.gradle'
+
+android {
+    compileSdkVersion configVersions.compileSdkVersion
+    buildToolsVersion configVersions.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion configVersions.minSdkVersion
+        targetSdkVersion configVersions.targetSdkVersion
+        versionCode configVersions.versionCode
+        versionName configVersions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField "String", "BASE_URL", "\"https://private-1c875-moviecatalogue1.apiary-mock.com/\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(path: ':base')
+
+    // Networks
+    implementation networkDependencies.retrofit
+    implementation networkDependencies.converterGson
+    implementation networkDependencies.gson
+    implementation networkDependencies.okHttp
+
+    testImplementation testDependencies.junit
+    androidTestImplementation testDependencies.androidxJunit
+    androidTestImplementation testDependencies.androidxEspresso
+}

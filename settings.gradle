@@ -1,0 +1,6 @@
+rootProject.name = 'Modular'
+include ':main'
+include ':base'
+include ':network'
+include ':movie'
+include ':setting'

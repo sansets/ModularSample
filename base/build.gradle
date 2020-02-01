@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply from: '../deps.gradle'
+
+android {
+    compileSdkVersion configVersions.compileSdkVersion
+    buildToolsVersion configVersions.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion configVersions.minSdkVersion
+        targetSdkVersion configVersions.targetSdkVersion
+        versionCode configVersions.versionCode
+        versionName configVersions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    // Support
+    implementation supportDependencies.kotlin
+    implementation supportDependencies.coreKtx
+    implementation supportDependencies.material
+    implementation supportDependencies.coroutineCore
+    implementation supportDependencies.coroutineAndroid
+
+    // Dependency Injection
+    implementation injectionDependencies.dagger
+
+    // Glide: Image loader
+    implementation(libraries.glide) {
+        exclude group: "androidx"
+    }
+    kapt libraries.glideCompiler
+
+    testImplementation testDependencies.junit
+    androidTestImplementation testDependencies.androidxJunit
+    androidTestImplementation testDependencies.androidxEspresso
+}

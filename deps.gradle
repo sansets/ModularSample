@@ -1,0 +1,60 @@
+ext {
+    kotlinVersion = '1.3.61'
+    composeVersion = '0.1.0-dev03'
+    supportLibraryVersion = '1.1.0'
+    retrofitVersion = '2.7.1'
+    daggerVersion = '2.26'
+    coroutineVersion = '1.3.3'
+    glideVersion = '4.11.0'
+
+    configVersions = [
+            compileSdkVersion: 29,
+            buildToolsVersion: "29.0.2",
+            minSdkVersion    : 21,
+            targetSdkVersion : 29,
+            versionCode      : 1,
+            versionName      : "1.0"
+    ]
+
+    supportDependencies = [
+            kotlin             : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
+            coreKtx            : "androidx.core:core-ktx:$supportLibraryVersion",
+            material           : "com.google.android.material:material:1.2.0-alpha04",
+            lifecycleExtensions: "androidx.lifecycle:lifecycle-extensions:2.2.0",
+            coroutineCore      : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion",
+            coroutineAndroid   : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion",
+            preference         : "androidx.preference:preference:1.1.0"
+    ]
+
+    layoutDependencies = [
+            constraint  : "androidx.constraintlayout:constraintlayout:1.1.3",
+            swiperefresh: "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    ]
+
+    injectionDependencies = [
+            dagger         : "com.google.dagger:dagger:$daggerVersion",
+            daggerCompiler : "com.google.dagger:dagger-compiler:$daggerVersion",
+            daggerAndroid  : "com.google.dagger:dagger-android:$daggerVersion",
+            daggerSupport  : "com.google.dagger:dagger-android-support:$daggerVersion",
+            daggerProcessor: "com.google.dagger:dagger-android-processor:$daggerVersion"
+    ]
+
+    networkDependencies = [
+            retrofit     : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            converterGson: "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            gson         : 'com.google.code.gson:gson:2.8.6',
+            okHttp       : "com.squareup.okhttp3:logging-interceptor:4.3.1"
+    ]
+
+    libraries = [
+            glide        : "com.github.bumptech.glide:glide:$glideVersion",
+            glideCompiler: "com.github.bumptech.glide:compiler:$glideVersion"
+    ]
+
+    testDependencies = [
+            junit           : 'junit:junit:4.13',
+            androidxJunit   : 'androidx.test.ext:junit:1.1.1',
+            androidxEspresso: 'androidx.test.espresso:espresso-core:3.2.0',
+            coroutinesTest  : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineVersion"
+    ]
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_movie">Movie</string>
+    <string name="title_backdrop">Backdrop</string>
+    <string name="title_poster">Poster</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_detail">Detail</string>
+    <string name="title_overview">Overview</string>
+</resources>

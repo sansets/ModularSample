@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply from: '../deps.gradle'
+
+android {
+    compileSdkVersion configVersions.compileSdkVersion
+    buildToolsVersion configVersions.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.sandisetiwan444.moviecatalogue"
+        minSdkVersion configVersions.minSdkVersion
+        targetSdkVersion configVersions.targetSdkVersion
+        versionCode configVersions.versionCode
+        versionName configVersions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(path: ':base')
+    implementation project(path: ':movie')
+    implementation project(path: ':setting')
+
+    // Support
+    implementation supportDependencies.kotlin
+    implementation supportDependencies.coreKtx
+    implementation supportDependencies.material
+    implementation supportDependencies.coroutineCore
+
+    testImplementation testDependencies.junit
+    androidTestImplementation testDependencies.androidxJunit
+    androidTestImplementation testDependencies.androidxEspresso
+}

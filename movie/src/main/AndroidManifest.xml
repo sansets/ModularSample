@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sandisetiawan444.movie">
+
+    <application>
+        <activity
+            android:name=".ui.detail.DetailActivity"
+            android:label="@string/title_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+    </application>
+
+</manifest>

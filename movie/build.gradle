@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply from: '../deps.gradle'
+
+android {
+    compileSdkVersion configVersions.compileSdkVersion
+    buildToolsVersion configVersions.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion configVersions.minSdkVersion
+        targetSdkVersion configVersions.targetSdkVersion
+        versionCode configVersions.versionCode
+        versionName configVersions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(path: ':base')
+    implementation project(path: ':network')
+
+    // Support
+    implementation supportDependencies.kotlin
+    implementation supportDependencies.coreKtx
+    implementation supportDependencies.material
+    implementation supportDependencies.lifecycleExtensions
+    implementation supportDependencies.coroutineCore
+
+    // Layout
+    implementation layoutDependencies.constraint
+    implementation layoutDependencies.swiperefresh
+
+    // Dependency Injection
+    implementation injectionDependencies.dagger
+    implementation injectionDependencies.daggerSupport
+    implementation injectionDependencies.daggerAndroid
+    kapt injectionDependencies.daggerCompiler
+    kapt injectionDependencies.daggerProcessor
+
+    // Network
+    implementation networkDependencies.retrofit
+    implementation networkDependencies.gson
+
+    testImplementation testDependencies.junit
+    androidTestImplementation testDependencies.androidxJunit
+    androidTestImplementation testDependencies.androidxEspresso
+}
