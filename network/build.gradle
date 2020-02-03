@@ -15,14 +15,31 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-
-        buildConfigField "String", "BASE_URL", "\"https://private-1c875-moviecatalogue1.apiary-mock.com/\""
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "version"
+
+    productFlavors {
+        production {
+            dimension "version"
+            buildConfigField "String", "BASE_URL", "\"https://private-1c875-moviecatalogue1.apiary-mock.com/\""
+        }
+
+        development {
+            flavorDimensions "version"
+            buildConfigField "String", "BASE_URL", "\"https://private-1c875-moviecatalogue1.apiary-mock.com/\""
+        }
+
+        staging {
+            flavorDimensions "version"
+            buildConfigField "String", "BASE_URL", "\"https://private-1c875-moviecatalogue1.apiary-mock.com/\""
         }
     }
 }
